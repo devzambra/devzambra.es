@@ -1,21 +1,12 @@
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faTwitter, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { SOCIAL_NETWORKS } from '../constants/SOCIAL'
 
 export default function Footer () {
-  const socialNetworks = [
-    { icon: faGithub, link: 'https://github.com/devzambra' },
-    { icon: faTwitter, link: 'https://twitter.com/devzambra' },
-    { icon: faInstagram, link: 'https://www.instagram.com/devzambra/' },
-    { icon: faYoutube, link: 'https://www.youtube.com/channel/UCtvgF3KrDStweE50YqzLJSg?view_as=subscriber' },
-    { icon: faEnvelope, link: 'mailto:dev.mzambrano@gmail.com' }
-  ]
-
   return (
-    <footer className='text-center'>
+    <footer className='text-center mt-20'>
       <div className='flex items-center justify-center'>
-        {socialNetworks.map(item => (
+        {SOCIAL_NETWORKS.map(item => (
           <Link href={item.link} key={item.link}>
             <a className='mx-2' target='_blank'>
               <FontAwesomeIcon className='w-8 h-8 dark:text-white' icon={item.icon} />
@@ -24,7 +15,7 @@ export default function Footer () {
         ))}
       </div>
       <div className='p-6'>
-        <p>Hecho por <Link href='/'>Manuel Zambrano</Link> © 2020</p>
+        <p>Hecho por <Link href='/'><a className='text-green-500'>Manuel Zambrano</a></Link> © 2020</p>
       </div>
     </footer>
   )
