@@ -37,11 +37,15 @@ export default function PodcastList ({ episodes, mode }) {
   return (
     <div>
       {mode === 'full' ? (<h3 className='flex items-center'>Aquí se habla de Código <FontAwesomeIcon icon={faTerminal} className='ml-2 w-8 h-8 dark:text-white' /> </h3>) : (<h4>Podcast 📡</h4>)}
-      {mode === 'full' && (<AudioPlayer audioItem={active} />)}
+      {mode === 'full' && (
+        <div className='my-6'>
+          <AudioPlayer audioItem={active} />
+        </div>
+      )}
       {episodes.map(item => (
         <article
           key={item.guid}
-          className='flex flex-col justify-between items-center rounded shadow-lg p-5 my-5 hover:shadow-xl dark:bg-gray-900'
+          className='flex flex-col justify-between items-center rounded shadow-lg p-5 my-6 hover:shadow-xl dark:bg-gray-900'
           onClick={() => toggleActive(item)}
         >
           <div className='flex flex-col sm:flex-row justify-between items-center'>
