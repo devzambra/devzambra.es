@@ -9,7 +9,7 @@ export default function Home ({ episodes }) {
   return (
     <>
 
-      <main className='mb-auto sm:grid grid-flow-col sm:grid-cols-3 gap-10'>
+      <main className='mb-auto sm:grid grid-flow-col sm:grid-cols-3 gap-10 mt-10'>
         <section className='col-span-2'>
           <Intro />
           <div className='mt-10'>

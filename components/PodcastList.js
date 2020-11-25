@@ -3,8 +3,6 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import AudioPlayer from './AudioPlayer'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTerminal } from '@fortawesome/free-solid-svg-icons'
 
 export default function PodcastList ({ episodes, mode }) {
   const router = useRouter()
@@ -36,7 +34,13 @@ export default function PodcastList ({ episodes, mode }) {
 
   return (
     <div>
-      {mode === 'full' ? (<h3 className='flex items-center'>Aquí se habla de Código <FontAwesomeIcon icon={faTerminal} className='ml-2 w-8 h-8 dark:text-white' /> </h3>) : (<h4>Podcast 📡</h4>)}
+      {mode === 'full'
+        ? (
+          <h2 className='flex items-center'>Aquí se habla de Código 🎙 </h2>
+          )
+        : (
+          <h2>Podcast 📡</h2>
+          )}
       {mode === 'full' && (
         <div className='my-6'>
           <AudioPlayer audioItem={active} />
@@ -45,7 +49,7 @@ export default function PodcastList ({ episodes, mode }) {
       {episodes.map(item => (
         <article
           key={item.guid}
-          className='flex flex-col justify-between items-center rounded shadow-lg p-5 my-6 hover:shadow-xl dark:bg-gray-900'
+          className='flex flex-col justify-between items-center rounded p-5 my-6 hover:bg-gray-400 cursor-pointer bg-gray-300 dark:hover:bg-gray-800 dark:bg-gray-700'
           onClick={() => toggleActive(item)}
         >
           <div className='flex flex-col sm:flex-row justify-between items-center'>

@@ -4,7 +4,7 @@ import ColorSwitch from './ColorSwitch'
 export default function Header () {
   return (
     <>
-      <header className='py-5 sticky top-0 bg-white'>
+      <header className='py-5 sticky top-0'>
         <div className='container flex justify-between items-center'>
           <ColorSwitch />
           <Navbar />

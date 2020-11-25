@@ -4,7 +4,7 @@ const AudioPlayer = ({ audioItem }) => {
   return (
     <>
       <PodcastNetworks />
-      <section className='rounded-b-3xl bg-transparent shadow-lg flex flex-col w-full justify-between items-center h-auto'>
+      <section className='rounded-b-3xl bg-transparent flex flex-col w-full justify-between items-center h-auto'>
         <div className='background flex w-full justify-center items-center' />
         <h2 className='text-white w-full h-full flex justify-center items-center p-6'>{audioItem.title}</h2>
         <audio controls className='flex w-full' controlsList='nodownload'>
