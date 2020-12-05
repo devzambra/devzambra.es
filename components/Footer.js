@@ -15,7 +15,7 @@ export default function Footer () {
         ))}
       </div>
       <div className='p-6'>
-        <p>Hecho por <Link href='/'><a className='text-green-500'>Manuel Zambrano</a></Link> © 2020</p>
+        <p>Hecho por <Link href='/'><a className='text-green-500 dark:text-green-500'>Manuel Zambrano</a></Link> © 2020</p>
       </div>
     </footer>
   )

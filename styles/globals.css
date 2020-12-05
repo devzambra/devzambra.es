@@ -16,7 +16,7 @@ h4 {
     @apply text-xl sm:text-2xl dark:text-white;
 }
 
-span, p, a {
+span, p, a, li {
     @apply text-lg dark:text-white;
 }
 
@@ -31,4 +31,39 @@ header {
 }
 .dark header {
     background-color: rgb(23, 25, 35);
+}
+
+/* Blog styles */
+.blog ul {
+    margin-left: 2rem;
+}
+.blog ul li:before {
+    content: '➤ '
+}
+.blog p,
+.blog li {
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.blog h1:not(.title),
+.blog h2:not(.title),
+.blog h3:not(.title),
+.blog h4:not(.title),
+.blog h5:not(.title),
+.blog h6:not(.title) {
+    margin-bottom: 2rem;
+}
+
+.blog h1:hover a .icon:before,
+.blog h2:hover a .icon:before,
+.blog h3:hover a .icon:before,
+.blog h4:hover a .icon:before,
+.blog h5:hover a .icon:before,
+.blog h6:hover a .icon:before {
+    display: inline-flex;
+    content: '#';
+    font-size: 2rem;
+    margin-left: 0.1rem;
+    @apply text-green-500;
 }

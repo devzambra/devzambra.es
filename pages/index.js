@@ -3,7 +3,7 @@ import Intro from '../components/Intro'
 import PodcastList from '../components/PodcastList'
 import PostList from '../components/PostList'
 import Separator from '../components/Separator'
-import VideosList from '../components/VideosList'
+// import VideosList from '../components/VideosList'
 
 export default function Home ({ episodes }) {
   return (
@@ -13,7 +13,7 @@ export default function Home ({ episodes }) {
         <section className='col-span-2'>
           <Intro />
           <div className='mt-10'>
-            <PostList />
+            <PostList limit={3} />
           </div>
           <Separator hidden='sm:hidden' />
         </section>
@@ -21,10 +21,10 @@ export default function Home ({ episodes }) {
           <div>
             <PodcastList episodes={episodes} />
           </div>
-          <Separator />
+          {/* <Separator />
           <div>
             <VideosList />
-          </div>
+          </div> */}
         </section>
       </main>
     </>
