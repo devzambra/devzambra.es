@@ -3,7 +3,7 @@ import Skills from '../components/Skills'
 export default function About () {
   return (
     <>
-      <div class='m-5 p-5 rounded-lg bg-gray-300 dark:bg-gray-700'>
+      <div className='m-5 p-5 rounded-lg bg-gray-300 dark:bg-gray-700'>
         <p>
           Hola, soy <strong>Manuel Zambrano</strong>, desarrollador web y mobile
           viviendo en Barcelona.

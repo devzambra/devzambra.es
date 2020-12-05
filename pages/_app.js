@@ -1,6 +1,8 @@
 import '../styles/tailwind.css'
 import Head from 'next/head'
 import '../styles/globals.css'
+import '../styles/prism.css'
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 

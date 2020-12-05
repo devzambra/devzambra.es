@@ -1,9 +1,8 @@
+import { formatRelative, parse } from 'date-fns'
+import { es } from 'date-fns/locale'
+
 export const convertDate = (value) => {
-  return new Date(value).toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  return formatRelative(parse(value, 'dd-MM-yyyy', new Date()), new Date(), { locale: es })
 }
 
 export const getReadingTime = (value) => {

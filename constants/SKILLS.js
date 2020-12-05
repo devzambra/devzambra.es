@@ -14,30 +14,30 @@ export const SKILLS = [
   },
   {
     name: 'Angular',
-    icon: 'git.svg'
-  },
-  {
-    name: 'Vue',
-    icon: 'firebase.svg'
-  },
-  {
-    name: 'Nuxt',
-    icon: 'sass.svg'
-  },
-  {
-    name: 'React',
-    icon: 'vue.svg'
-  },
-  {
-    name: 'Git',
-    icon: 'nuxt.svg'
-  },
-  {
-    name: 'Firebase',
     icon: 'angular.svg'
   },
   {
-    name: 'SASS',
+    name: 'Vue',
+    icon: 'vue.svg'
+  },
+  {
+    name: 'Nuxt',
+    icon: 'nuxt.svg'
+  },
+  {
+    name: 'React',
     icon: 'react.svg'
+  },
+  {
+    name: 'Git',
+    icon: 'git.svg'
+  },
+  {
+    name: 'Firebase',
+    icon: 'firebase.svg'
+  },
+  {
+    name: 'SASS',
+    icon: 'sass.svg'
   }
 ]
