@@ -13,3 +13,11 @@ My website is currently made with Next.js and React. It uses MDX to write blog a
 - [Next.js](https://nextjs.org/)
 - [Vercel](https://vercel.com)
 - [MDX](https://github.com/mdx-js/mdx)
+
+
+## TODOs
+
+- Improve SEO
+- Improve Lighthouse rating
+- Refactor code
+- Refactor styles
