@@ -1,0 +1,392 @@
+---
+title: 'API Mock con Nestjs y Swagger'
+description: 'Creamos un mock de una API con Nestjs y Swagger'
+github: 'https://github.com/devzambra/devzambra/edit/master/content/blog/api-mock-con-nestjs-y-swagger.mdx'
+publishedAt: '26-12-2020 19:17:00'
+tags:
+  - nestjs
+---
+
+
+## Presentación
+
+Vamos a construir una api mock utilizando Nestjs, un framework de nodejs que utiliza Typescript y un sistema de módulos y de inyección de dependencias muy parecido a Angular.
+
+Para generar de forma automática la documentación de la API utilizaremos Swagger, que nos generará una página donde podremos consultar la documentación de la API y todos sus endpoints, así como nos permitirá realizar llamadas de prueba y ver los datos de entrada y de salida de cada uno de ellos.
+
+## Instalando Nestjs
+
+Para poder usar Nestjs es importante que tengamos previamente isntalados Nodejs y Npm. Para instalarlos basta con ir a https://nodejs.org/es/ y seguir las instrucciones de descarga e instalación.
+
+A continuación, debemos instalar el CLI de Nestjs, que nos permitirá crear un nuevo proyecto con las configuraciones necesarias.
+
+Para ello ejecutamos en la terminal: 
+
+```shell
+npm i -g @nestjs/cli
+```
+
+## Creando el proyecto y estructura de carpetas
+
+Con el CLI instalado, ahora podemos generar un nuevo proyecto de Nestjs.
+
+Para ello ejecutamos:
+
+```shell
+nest new mock-nestjs-swagger
+```
+
+En mi caso, le voy a llamar `mock-nestjs-swagger` pero puedes llamarle como quieras.
+
+Durante la creación del proyecto, nos preguntará qué gestor de paquetes queremos usar.
+
+```shell
+? Which package manager would you ❤️  to use? (Use arrow keys)
+❯ npm
+  yarn
+```
+
+En mi caso elijo `npm` pero puedes elegir `yarn` igualmente.
+
+Una vez generado el proyecto, veremos algo como esto:
+
+```shell
+.
+├── README.md
+├── nest-cli.json
+├── package-lock.json
+├── package.json
+├── src
+│   ├── app.controller.spec.ts
+│   ├── app.controller.ts
+│   ├── app.module.ts
+│   ├── app.service.ts
+│   └── main.ts
+├── test
+│   ├── app.e2e-spec.ts
+│   └── jest-e2e.json
+├── tsconfig.build.json
+└── tsconfig.json
+```
+
+Si miramos dentro de `src` veremos una estructura muy similar a un proyecto Angular. Un `main.ts` que hace de punto de entrada de la aplicación, un `app.module.ts` como módulo principal y un `app.controller.ts` que sería el equivalente a un componente en Angular. Además, podemos ver un `app.service.ts` que, similar al concepto de servicio de Angular, actúa como un Inyectable que proporciona funcionalidad a los controladores.
+
+### main.ts
+
+Aquí es donde se inicializa la aplicación, indicándole qué módulo cargar y en qué puerto ejecutar la API.
+
+```typescript:main.ts
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+}
+bootstrap();
+```
+
+### app.module.ts
+
+Aquí configuramos el módulo principal que cargará la aplicación y le hacemos saber qué controladores, servicios, etc. están disponibles.
+
+```typescript:app.module.ts
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
+@Module({
+  imports: [],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+```
+
+### app.controller.ts
+
+Controlador que ha creado Nestjs por defecto. Será el punto de entrada de la API. Ahora mismo sólo dispone de un endpoint `/` y un sólo método `GET /` declarado en la función `getHello()`, pero pronto vamos a cambiarlo para que responda a un endpoint diferente y tenga los métodos básicos de las operaciones CRUD (`Create, Read, Update, Delete`).
+
+```typescript:app.controller.ts
+import { Controller, Get } from '@nestjs/common';
+import { AppService } from './app.service';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
+  }
+}
+```
+
+### app.service.ts
+
+Por último, en este servicio van los métodos encargados de realizar operaciones con los datos de entrada y generar los datos de salida para cada petición. De esta forma mantenemos los controladores lo más limpios posible.
+
+```typescript:app.service.ts
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class AppService {
+  getHello(): string {
+    return 'Hello World!';
+  }
+}
+```
+
+## Añadiendo Swagger
+
+Ahora vamos a instalar Swagger para poder generar la documentación de la API. 
+
+Para ello ejecutamos:
+
+```shell
+npm i @nestjs/swagger swagger-ui-express
+```
+
+Y procedemos a configurarlo. Vamos al archivo `main.ts` y lo cambiamos para añadir la configuración de Swagger, de la siguiente forma:
+
+```typescript:main.ts
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  const options = new DocumentBuilder()
+    .setTitle('Nestjs + Swagger mock API')
+    .setDescription(
+      `Ejemplo de mock de una API utilizando Nestjs para generar la API
+      y Swagger para generar la documentación`,
+    )
+    .setVersion('1.0')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('docs', app, document);
+
+  await app.listen(3000);
+}
+bootstrap();
+```
+
+Con esto tenemos configurado Swagger para que genere la documentación de la API con título `Nestjs + Swagger mock API`, descripción `Ejemplo de mock de una API utilizando Nestjs para generar la API y Swagger para generar la documentación` y versión `1.0`.
+
+En la función `setup` le decimos que queremos que el endpodint para consultar esta documentación será `/docs`.
+
+Ahora, si ejecutamos 
+
+```shell 
+npm start
+```
+
+y vamos a http://localhost:3000/docs/ veremos la documentación generada. Aunque ahora mismo sólo tenemos el método que hemos visto de prueba.
+
+Vamos a crear nuestros métodos.
+
+## Modelo User
+
+Vamos a crear un modelo `User` para tener una estructura unificada para tratar los datos.
+
+Dentro de la carpeta `src` creamos el archivo `user.model.ts` con el siguiente contenido:
+
+```typescript:user.model.ts
+import { ApiProperty } from '@nestjs/swagger';
+
+export class User {
+  @ApiProperty({ description: 'Nombre del usuario', example: 'Manuel' })
+  name: string;
+
+  @ApiProperty({
+    description: 'Correo electrónico del usuario',
+    example: 'manuel@test.com',
+  })
+  email: string;
+
+  @ApiProperty({ description: 'Edad del usuario', example: 23 })
+  age: number;
+
+  @ApiProperty({
+    description: 'Dirección del usuario',
+    example: 'Calle ejemplo 22',
+  })
+  address: string;
+
+  constructor(name: string, email: string, age: number, address: string) {
+    this.name = name;
+    this.email = email;
+    this.age = age;
+    this.address = address;
+  }
+}
+```
+
+Con el decorador `@ApiProperty ` le estamos indicando a Swagger que queremos definir una propiedad y podemos asignarle diferentes parámetros, como una descripción y un valor de ejemplo.
+
+## Creando los métodos del servicio
+
+Para trabajar con los datos vamos a necesitar crear algunos métodos en el servicio `app.service.ts`. El código quedaría de la siguiente forma:
+
+```typescript:app.service.ts
+import { Injectable } from '@nestjs/common';
+import { User } from './user.model';
+
+@Injectable()
+export class AppService {
+  private readonly users: User[] = [];
+
+  getUsers(): User[] {
+    return this.users;
+  }
+
+  getById(id: number): User {
+    return this.users.find((u) => u.id === id);
+  }
+
+  create(user: User): User {
+    this.users.push(user);
+    return user;
+  }
+
+  update(id: number, user: User): User {
+    const u = this.users.findIndex((u) => u.id === id);
+
+    if (u > -1) {
+      this.users[u] = user;
+    }
+
+    return user;
+  }
+
+  delete(id: number): boolean {
+    const u = this.users.findIndex((u) => u.id === id);
+
+    if (u > -1) {
+      this.users.splice(u, 1);
+    }
+
+    return true;
+  }
+}
+```
+
+## Configurando app.controller.ts
+
+Por último, debemos configurar nuestro controlador para responder a la ruta `/users` y a los diferentes métodos del CRUD.
+
+```typescript:app.controller.ts
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AppService } from './app.service';
+import { User } from './user.model';
+
+@ApiTags('Users')
+@Controller('users')
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  @ApiOperation({ summary: 'Obtiene todos los usuarios' })
+  @ApiResponse({
+    status: 200,
+    description: 'Ok. Usuarios obtenidos correctamente',
+    type: [User],
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'Not found. Usuarios no encontrados.',
+  })
+  getUsers(): User[] {
+    return this.appService.getUsers();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Obtiene un usuario por su id' })
+  @ApiResponse({
+    status: 200,
+    description: 'Ok. Usuario encontrado',
+    type: User,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'Not found. Usuario no encontrado.',
+  })
+  getUser(@Param('id') id: number): User {
+    return this.appService.getById(id);
+  }
+
+  @Post()
+  @ApiOperation({ summary: 'Crea un nuevo usuario' })
+  @ApiResponse({
+    status: 200,
+    description: 'Ok. Usuario creado',
+    type: User,
+  })
+  createUser(@Body() user: User): User {
+    return this.appService.create(user);
+  }
+
+  @Put(':id')
+  @ApiOperation({ summary: 'Actualiza un usuario' })
+  @ApiResponse({
+    status: 200,
+    description: 'Ok. Usuario actualizado',
+    type: User,
+  })
+  updateUser(@Param('id') id: number, @Body() user: User): User {
+    return this.appService.update(id, user);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Elimina un usuario' })
+  @ApiResponse({
+    status: 200,
+    description: 'Ok. Usuario eliminado',
+  })
+  deleteUser(@Param('id') id: number): { message: string } {
+    this.appService.delete(id);
+
+    return { message: 'OK' };
+  }
+}
+```
+
+## Resultado final
+
+Con todo esto, si levantamos el servidor con `npm run start` y vamos a http://localhost:3000/docs veremos la documentación generada por Swagger para nuestra API. 
+
+<img src="/assets/images/api-mock-con-nestjs-y-swagger-01.png" />
+<br/>
+
+También veremos abajo una sección de `Schemas` donde podremos ver todos los modelos de nuestra API, en este caso `User`. 
+
+<img src="/assets/images/api-mock-con-nestjs-y-swagger-02.png" />
+<br/>
+
+Además, podremos probar los diferentes endpoints usando el botón de `Try out` que hay al desplegar cada llamada.
+
+<img src="/assets/images/api-mock-con-nestjs-y-swagger-03.png" />
+<br/>
+
+## Conclusión
+
+Nestjs es un framework de Nodejs muy fácil de usar, muy adaptable y muy modular que nos ayuda a crear APIs.
+
+Swagger es una herramienta muy potente para documentar APIs y generar mocks.
+
+Utilizar Nestjs y Swagger juntos puede ayudarnos a definir el contrato de una API, al mismo tiempo que generamos una documentación muy importante para mantener siempre el foco y consistencia de la API.
+
+Además, una vez tengamos el mock y la documentación, podemos ir escalando el mock hacia una API real de forma escalonada y sencilla.
+
