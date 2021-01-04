@@ -1,12 +1,11 @@
 ---
-title: 'API Mock con Nestjs y Swagger'
-description: 'Creamos un mock de una API con Nestjs y Swagger'
-github: 'https://github.com/devzambra/devzambra/edit/master/content/blog/api-mock-con-nestjs-y-swagger.mdx'
-publishedAt: '26-12-2020 19:17:00'
+title: "API Mock con Nestjs y Swagger"
+description: "Creamos un mock de una API con Nestjs y Swagger"
+github: "https://github.com/devzambra/devzambra.es/edit/main/pages/blog/api-mock-con-nestjs-y-swagger.mdx"
+publishedAt: "26-12-2020 19:17:00"
 tags:
   - nestjs
 ---
-
 
 ## Presentación
 
@@ -20,7 +19,7 @@ Para poder usar Nestjs es importante que tengamos previamente isntalados Nodejs 
 
 A continuación, debemos instalar el CLI de Nestjs, que nos permitirá crear un nuevo proyecto con las configuraciones necesarias.
 
-Para ello ejecutamos en la terminal: 
+Para ello ejecutamos en la terminal:
 
 ```shell
 npm i -g @nestjs/cli
@@ -139,7 +138,7 @@ export class AppService {
 
 ## Añadiendo Swagger
 
-Ahora vamos a instalar Swagger para poder generar la documentación de la API. 
+Ahora vamos a instalar Swagger para poder generar la documentación de la API.
 
 Para ello ejecutamos:
 
@@ -178,9 +177,9 @@ Con esto tenemos configurado Swagger para que genere la documentación de la API
 
 En la función `setup` le decimos que queremos que el endpodint para consultar esta documentación será `/docs`.
 
-Ahora, si ejecutamos 
+Ahora, si ejecutamos
 
-```shell 
+```shell
 npm start
 ```
 
@@ -365,20 +364,20 @@ export class AppController {
 
 ## Resultado final
 
-Con todo esto, si levantamos el servidor con `npm run start` y vamos a http://localhost:3000/docs veremos la documentación generada por Swagger para nuestra API. 
+Con todo esto, si levantamos el servidor con `npm run start` y vamos a http://localhost:3000/docs veremos la documentación generada por Swagger para nuestra API.
 
 <img src="/assets/images/api-mock-con-nestjs-y-swagger-01.png" />
-<br/>
+<br />
 
-También veremos abajo una sección de `Schemas` donde podremos ver todos los modelos de nuestra API, en este caso `User`. 
+También veremos abajo una sección de `Schemas` donde podremos ver todos los modelos de nuestra API, en este caso `User`.
 
 <img src="/assets/images/api-mock-con-nestjs-y-swagger-02.png" />
-<br/>
+<br />
 
 Además, podremos probar los diferentes endpoints usando el botón de `Try out` que hay al desplegar cada llamada.
 
 <img src="/assets/images/api-mock-con-nestjs-y-swagger-03.png" />
-<br/>
+<br />
 
 ## Conclusión
 
@@ -389,4 +388,3 @@ Swagger es una herramienta muy potente para documentar APIs y generar mocks.
 Utilizar Nestjs y Swagger juntos puede ayudarnos a definir el contrato de una API, al mismo tiempo que generamos una documentación muy importante para mantener siempre el foco y consistencia de la API.
 
 Además, una vez tengamos el mock y la documentación, podemos ir escalando el mock hacia una API real de forma escalonada y sencilla.
-
