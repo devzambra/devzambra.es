@@ -1,5 +1,8 @@
 import VideosList from "../../components/VideosList";
 
+import { getYoutubeVideos } from '../api/youtube'
+import { mapYoutubeVideos } from '../../utils/mappers'
+
 export default function videos({videos}) {
     return (
         <div className="page-container">
