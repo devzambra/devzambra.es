@@ -21,23 +21,11 @@ export const SKILLS = [
     icon: 'vue.svg'
   },
   {
-    name: 'Nuxt',
-    icon: 'nuxt.svg'
-  },
-  {
     name: 'React',
     icon: 'react.svg'
-  },
-  {
-    name: 'Git',
-    icon: 'git.svg'
   },
   {
     name: 'Firebase',
     icon: 'firebase.svg'
   },
-  {
-    name: 'SASS',
-    icon: 'sass.svg'
-  }
 ]

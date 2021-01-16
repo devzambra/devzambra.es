@@ -29,6 +29,15 @@ export default function PostList ({ limit }) {
           </Link>
         )
       })}
+      <style jsx>{`
+        .description {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
+      `}</style>
     </>
   )
 }

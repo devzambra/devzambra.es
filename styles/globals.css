@@ -67,3 +67,7 @@ header {
     margin-left: 0.1rem;
     @apply text-green-500;
 }
+
+.page-container {
+    min-height: calc(100vh - (108px + 84px + 5rem));
+}

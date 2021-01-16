@@ -2,7 +2,9 @@ import PostList from '../../components/PostList'
 
 const Blog = () => {
   return (
-    <PostList />
+    <div className="page-container">
+      <PostList />
+    </div>
   )
 }
 

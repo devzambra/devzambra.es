@@ -1,3 +1,5 @@
+import Skills from '../components/Skills'
+
 export default function Intro () {
   return (
     <>
@@ -7,6 +9,7 @@ export default function Intro () {
         Mi actual objetivo es seguir aprendiendo muchísimo de este maravilloso mundo del Frontend y, en mi camino, aportar todo
         lo que pueda a la comunidad Frontend.
       </p>
+      <Skills />
     </>
   )
 }

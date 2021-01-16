@@ -63,6 +63,15 @@ export default function PodcastList ({ episodes, mode }) {
           </div>
         </article>
       ))}
+      <style jsx>{`
+        .description {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
+      `}</style>
     </div>
   )
 }

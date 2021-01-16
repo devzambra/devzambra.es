@@ -23,6 +23,6 @@ module.exports = withMdxEnhanced({
 })({
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   images: {
-    domains: ['d3t3ozftmdmh3i.cloudfront.net']
+    domains: ['d3t3ozftmdmh3i.cloudfront.net', 'i.ytimg.com']
   }
 })

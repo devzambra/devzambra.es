@@ -1,19 +1,15 @@
-import Parser from 'rss-parser'
 import PodcastList from '../../components/PodcastList'
 
 export default function Podcast ({ episodes }) {
   return (
-    <>
+    <div className="page-container">
       <PodcastList episodes={episodes} mode='full' />
-    </>
+    </div>
   )
 }
 
 export async function getServerSideProps () {
-  const rss = await new Parser().parseURL(
-    'https://anchor.fm/s/3f0ee6d0/podcast/rss'
-  )
-  const { items } = rss
+  const items = await getPodcastEpisodes()
 
   return {
     props: { episodes: items }
