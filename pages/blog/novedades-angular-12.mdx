@@ -1,0 +1,88 @@
+---
+title: "Novedades de Angular 12"
+description: "La versión 12 de Angular viene con algunas novedades interesantes."
+github: "https://github.com/devzambra/devzambra.es/edit/main/pages/blog/novedades-angular-12.mdx"
+publishedAt: "07-06-2021"
+tags:
+  - angular
+---
+## Presentación
+
+Tal y como nos tiene acostumbrados el equipo de Angular, siguiendo con las versiones cada seis meses, la nueva versión 12 de Angular se liberó a mediados del pasado mes de mayo.
+
+Como siempre, cada versión trae consigo algunas mejoras y nuevas características. Vamos a ver quñe hay de nuevo con esta versión 12 de Angular.
+
+## View Engine obsoleto
+
+Desde esta nueva versión, el View Engine que se usaba antes de que apareciera Ivy queda marcado como obsoleto y, por tanto, se quitará en futuras versiones.
+Las librerías que actualmente usan el View Engine, seguirán funcionando, pero es buena idea empezar a migrar.
+
+Esto supone un cambio importante, ya que Ivy trae consigo muchas mejoras de rendimiento, tamaño de bundles y debugging, de las que ya veníamos disfrutando hace algunas versiones, pero ahora todas las aplicaciones nuevas tendrán que usar estas ventajas.
+
+## Cambios en los IDs de i18n
+
+Se ha cambiado el formato de los IDs que se generaban para realizar las traducciones mediante la utilidad de i18n integrada en Angular.
+Al parecer, antes coexistían diferentes formatos para generar los IDs, lo que daba lugar a fragilidad y problemas a la hora de detectar cambios en las traducciones.
+Con este cambio, se pretende hacer que estos IDs sean menos frágiles y más consistentes.
+
+Igualmente, no creo que utilizar el i18n que viene con Angular sea lo más común, al menos en mi caso suelo usar librerías como ngx-translate para este propósito.
+
+## La desaparición de Protractor
+
+El equipo de Angular se ha dado cuenta de que Protractor, anteriormente utilizado por defecto para realizar tests end to end (e2e), no es la opción más moderna ni la más aceptada por la comunidad. Por esto, han decidido eliminar Protractor de los nuevos proyectos generados con Angular CLI, mientras estudian otras alternativas, como Cypress, WebIO o TestCafe.
+
+En mi opinión, este es un cambio significativo, ya que obtenemos mayor flexibilidad a la hora de elegir nuestra librería de pruebas en cada proyecto de forma más sencilla que antes.
+
+## Nullish coalescing
+
+Pongo este título en inglés, porque su traducción al castellano me resulta extremadamente extraña ("fusión de nulos" o "anular la fusión").
+
+Esta es una característica que ya venimos disfrutando desde hace un tiempo en Typescript, y que ahora llega a las plantillas html. A partir de la versión 12 de Angular, podemos utilizar el nullish (??) dentro del html para hacer comprobaciones estrictas de `null` o `undefined`. Por ejemplo, esto:
+
+
+```html
+{{age !== null && age !== undefined ? age : calculateAge() }}
+```
+
+se puede hacer con el operador `??` de la siguiente forma:
+
+
+```html
+{{ age ?? calculateAge() }}
+```
+
+### Diferencia entre Nullish(??) y OR(||)
+
+La principal diferencia entre estos dos operadores es que `Nullish(??)` comprueba `null` o `undefined`, mientras que `OR(||)` comprueba valores `truthy` o `falsy`.
+
+¿Qué significa esto?
+
+Significa que, por ejemplo, si en el ejemplo anterior `age = 0`, entonces utilizando `||` estaríamos considerando que el lado izquierdo de la expresión es `false`, porque `0 es un valor falsy`.
+
+En cambio, si usamos `??`, el lado izquierdo de la expresión sería `true`, porque `0 no es null ni es undefined`.
+
+Dependerá de nosotros, los desarrolladores, cual de los dos utilizar, ya que ambos tienen sus usos según el caso y las especificaciones del proyecto.
+
+## Mejoras en la documentación
+
+Se ha mejorado la documentación, incluyendo nuevos ejemplos y explicaciones y mejorando las existentes. Además, en la versión anterior crearon una sección con videos de problemas comunes y sus soluciones, y parece ser que a la comunidad le ha gustado bastante. 
+
+https://blog.angular.io/angular-debugging-guides-dfe0ef915036
+
+## Sass en línea
+
+Ahora los componentes de Angular soportan los estilos SASS en línea, directamente dentro del decorado @Component. Es una característica interesante, aunque a mí me gusta más tener las cosas separadas, cada una en su propio archivo.
+
+También, internamente, Angular CDK y Angular Material comienzan a usar el nuevo sistema de módulos de SASS. Así que ya no tendremos como dependencia `node-sas` sino que se pasa a usar directamente el paquete `sass`.
+
+## Otras características interesantes
+
+- `ng build` ahora está por defecto en modo `production`, lo que nos ahorra tener que escribir el flag `--prod` o que se nos olvide y acabemos subiendo una build de desarrollo.
+- El modo estricto (Strict mode) está por defecto activado cuando usamos el CLI. Esto nos ayuda a prevenir errores y a detectar posibles bugs más rápidamente.
+- La extensión de Language Service para VSCode, ahora utiliza Ivy por defecto. Esto hará que el autocompletado funcione mejor y sea más rápido.
+- Versión 5 de webpack oficialmente incluida por defecto.
+- Versión de Typescript aumenta a la 4.2
+- Soporte para IE11 marcado como obsoleto y se quitará en la versión 13.
+- Algunas mejoras más y cambios de la comunidad.
+
+Podéis ver el post original en el blog de Angular, aquí: https://blog.angular.io/angular-v12-is-now-available-32ed51fbfd49
