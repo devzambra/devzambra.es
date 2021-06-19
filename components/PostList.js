@@ -1,10 +1,10 @@
 import { frontMatter as blogPosts } from '../pages/blog/*.mdx'
 
 import Link from 'next/link'
-import { convertDate, getReadingTime } from '../utils/timeUtils'
+import { compareDates, convertDate, getReadingTime } from '../utils/timeUtils'
 
 export default function PostList ({ limit }) {
-  let posts = blogPosts
+  let posts = blogPosts.sort((a, b) => compareDates(a.publishedAt, b.publishedAt))
   if (limit) {
     posts = blogPosts.slice(0, limit)
   }
@@ -37,7 +37,8 @@ export default function PostList ({ limit }) {
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
         }
-      `}</style>
+      `}
+      </style>
     </>
   )
 }
