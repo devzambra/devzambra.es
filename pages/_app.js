@@ -13,8 +13,8 @@ function MyApp ({ Component, pageProps }) {
         <title>devzambra | Frontend Developer</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
+      <Header />
       <div className='container flex flex-col min-h-screen justify-between px-3'>
-        <Header />
         <Component {...pageProps} />
         <Footer />
       </div>

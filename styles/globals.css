@@ -9,9 +9,11 @@ h1 {
 h2 {
     @apply text-3xl sm:text-4xl dark:text-white;
 }
+
 h3 {
     @apply text-2xl sm:text-3xl dark:text-white;
 }
+
 h4 {
     @apply text-xl sm:text-2xl dark:text-white;
 }
@@ -20,15 +22,26 @@ span, p, a, li {
     @apply text-lg dark:text-white;
 }
 
-body {
-    background-color: #f0f0f0;
+a {
+    @apply dark:hover:text-green-600
 }
+
+a.active {
+    @apply text-green-600;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
 .dark body {
     background-color: rgb(23, 25, 35);
 }
+
 header {
-    background-color: #f0f0f0;
+    background-color: #f1f1f1;
 }
+
 .dark header {
     background-color: rgb(23, 25, 35);
 }
@@ -37,9 +50,11 @@ header {
 .blog ul {
     margin-left: 2rem;
 }
+
 .blog ul li:before {
     content: '➤ '
 }
+
 .blog p,
 .blog li {
     margin-bottom: 2rem;
