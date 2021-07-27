@@ -11,8 +11,7 @@ function MyApp ({ Component, pageProps }) {
     <>
       <Head>
         <title>devzambra | Frontend Developer</title>
-        <meta lang='es' />
-        <meta description='Blog personal con artículos tecnológicos y de programación' />
+        <meta name='description' content='Blog personal con artículos tecnológicos y de programación' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <div className='container flex flex-col min-h-screen justify-between px-3'>
