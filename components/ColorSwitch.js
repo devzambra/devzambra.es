@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useState } from 'react'
 
 const COLOR_MODE = 'colorMode'
 const ColorModes = {
@@ -42,7 +42,7 @@ export default function ColorSwitch () {
 
   return (
     <div>
-      <button onClick={toggleMode} className='bg-gray-200 dark:bg-gray-700 bg-opacity-80 dark:bg-opacity-20 p-3 rounded'>
+      <button aria-label='color mode' onClick={toggleMode} className='bg-gray-200 dark:bg-gray-700 bg-opacity-80 dark:bg-opacity-20 p-3 rounded'>
         <FontAwesomeIcon icon={getModeIcon()} className='w-4 h-4 dark:text-white' />
       </button>
       <style jsx>{`
