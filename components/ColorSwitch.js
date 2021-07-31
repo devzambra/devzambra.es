@@ -41,7 +41,7 @@ export default function ColorSwitch () {
   }
 
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-end sm:justify-center col-span-4 sm:col-span-1'>
       <div className='flex items-center justify-center'>
         <label htmlFor='colorMode' className='flex items-center cursor-pointer'>
           <div className='relative'>
@@ -49,11 +49,11 @@ export default function ColorSwitch () {
               type='checkbox' id='colorMode' aria-label='color mode' className='sr-only' onChange={toggleMode}
               checked={mode === ColorModes.DARK}
             />
-            <div className='block bg-gray-600 w-14 h-8 rounded-full' />
-            <div className='dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition'>
+            <div className='block bg-gray-600  w-10 h-6 sm:w-14 sm:h-8 rounded-full' />
+            <div className='dot absolute left-1 top-1 bg-white w-4 h-4 sm:w-6 sm:h-6 rounded-full transition'>
               <FontAwesomeIcon
                 icon={getModeIcon()}
-                className='w-4 h-4 text-gray-900 dark:text-white absolute left-1 top-1'
+                className='w-2 h-2 sm:w-4 sm:h-4 text-gray-900 dark:text-white absolute left-1 top-1'
               />
             </div>
           </div>

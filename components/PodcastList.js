@@ -1,4 +1,3 @@
-
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -39,7 +38,7 @@ export default function PodcastList ({ episodes, mode }) {
           <h2 className='flex items-center'>Aquí se habla de Código 🎙 </h2>
           )
         : (
-          <h2>Podcast 📡</h2>
+          <h3 className='text-gray-600'>Último podcast</h3>
           )}
       {mode === 'full' && (
         <div className='my-6'>
@@ -49,7 +48,22 @@ export default function PodcastList ({ episodes, mode }) {
       {episodes.map(item => (
         <article
           key={item.guid}
-          className='flex flex-col justify-between items-center rounded p-5 my-6 hover:bg-gray-400 cursor-pointer bg-gray-300 dark:hover:bg-gray-800 dark:bg-gray-700'
+          className={`
+          flex 
+          flex-col 
+          justify-between 
+          items-center 
+          rounded 
+          rounded-xl 
+          p-5 
+          my-6 
+          cursor-pointer 
+          bg-gray-100 
+          shadow-md 
+          dark:bg-gray-700
+          hover:bg-gray-300
+          dark:hover:bg-gray-500
+          `}
           onClick={() => toggleActive(item)}
         >
           <div className='flex flex-col sm:flex-row justify-between items-center'>
@@ -71,7 +85,8 @@ export default function PodcastList ({ episodes, mode }) {
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
         }
-      `}</style>
+      `}
+      </style>
     </div>
   )
 }

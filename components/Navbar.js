@@ -5,7 +5,7 @@ export default function Navbar () {
   const router = useRouter()
 
   return (
-    <nav className='flex items-center justify-center col-span-3'>
+    <nav className='hidden sm:flex items-center justify-center col-span-3'>
       <ul className='text-center flex'>
         <li className='font-bold text-gray-700 p-2'>
           <Link href='/' className='link'>

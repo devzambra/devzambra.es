@@ -22,8 +22,8 @@ span, p, a, li {
     @apply text-lg dark:text-white;
 }
 
-a {
-    @apply dark:hover:text-green-600
+li a {
+    @apply hover:text-green-600;
 }
 
 a.active {
