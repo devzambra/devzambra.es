@@ -21,6 +21,7 @@ module.exports = withMdxEnhanced({
     })
   }
 })({
+  webpack5: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   images: {
     domains: ['d3t3ozftmdmh3i.cloudfront.net', 'i.ytimg.com']

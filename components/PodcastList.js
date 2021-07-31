@@ -1,7 +1,7 @@
 
 import Image from 'next/image'
-import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import AudioPlayer from './AudioPlayer'
 
 export default function PodcastList ({ episodes, mode }) {
@@ -54,7 +54,7 @@ export default function PodcastList ({ episodes, mode }) {
         >
           <div className='flex flex-col sm:flex-row justify-between items-center'>
             <div className='sm:mb-0 mb-4 flex justify-center'>
-              <Image src={item.itunes.image} width={100} height={100} />
+              <Image alt={item.title} src={item.itunes.image} width={100} height={100} />
             </div>
             <div className='ml-4 w-full sm:w-5/6'>
               <strong className='dark:text-white'>{item.title}</strong>

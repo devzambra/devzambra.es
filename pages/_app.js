@@ -1,16 +1,17 @@
-import '../styles/tailwind.css'
 import Head from 'next/head'
-import '../styles/globals.css'
-import '../styles/prism.css'
-
-import Header from '../components/Header'
 import Footer from '../components/Footer'
+import Header from '../components/Header'
+import '../styles/prism.css'
+import '../styles/tailwind.css'
+import '../styles/x-globals.css'
+
 
 function MyApp ({ Component, pageProps }) {
   return (
     <>
       <Head>
         <title>devzambra | Frontend Developer</title>
+        <meta name='description' content='Blog personal con artículos tecnológicos y de programación' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />

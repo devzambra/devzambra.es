@@ -11,7 +11,7 @@ export default function Skills () {
               key={skill.name}
               className='p-4 flex flex-col items-center'
             >
-              <Image src={`/assets/icons/${skill.icon}`} width={50} height={50} />
+              <Image alt={skill.name} src={`/assets/icons/${skill.icon}`} width={50} height={50} />
               {skill.name}
             </span>
           ))}

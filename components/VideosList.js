@@ -20,8 +20,9 @@ export default function VideosList ({ videos, mode }) {
           className='flex my-2'
           href={`https://youtube.com/watch?v=${item.id}`}
           target="_blank"
+          aria-label={item.title} rel='noreferrer'
         >
-          <Image src={item.images.medium.url} width={item.images.medium.width} height={item.images.medium.height} />
+          <Image alt={item.title} src={item.images.medium.url} width={item.images.medium.width} height={item.images.medium.height} />
         </a>
       ))}
       </section>

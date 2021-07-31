@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect, useState } from 'react'
 
 const COLOR_MODE = 'colorMode'
 const ColorModes = {
@@ -46,7 +46,7 @@ export default function ColorSwitch () {
         <label htmlFor='colorMode' className='flex items-center cursor-pointer'>
           <div className='relative'>
             <input
-              type='checkbox' id='colorMode' className='sr-only' onChange={toggleMode}
+              type='checkbox' id='colorMode' aria-label='color mode' className='sr-only' onChange={toggleMode}
               checked={mode === ColorModes.DARK}
             />
             <div className='block bg-gray-600 w-14 h-8 rounded-full' />
