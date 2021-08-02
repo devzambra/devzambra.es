@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import AudioPlayer from './AudioPlayer'
+import PodcastNetworks from './PodcastNetworks'
 
 export default function PodcastList ({ episodes, mode }) {
   const router = useRouter()
@@ -31,20 +31,18 @@ export default function PodcastList ({ episodes, mode }) {
     }
   }
 
+  const baseStyles = mode === 'full' ? 'mb-auto sm:grid grid-flow-col sm:grid-cols-3 gap-10 mt-10' : ''
+
   return (
-    <div>
+    <div className={baseStyles}>
+      <section className='col-span-2'>
       {mode === 'full'
         ? (
-          <h2 className='flex items-center'>Aquí se habla de Código 🎙 </h2>
+          <h3 className='flex items-center text-gray-600'>Aquí se habla de Código </h3>
           )
         : (
           <h3 className='text-gray-600'>Último podcast</h3>
           )}
-      {mode === 'full' && (
-        <div className='my-6'>
-          <AudioPlayer audioItem={active} />
-        </div>
-      )}
       {episodes.map(item => (
         <article
           key={item.guid}
@@ -53,7 +51,6 @@ export default function PodcastList ({ episodes, mode }) {
           flex-col 
           justify-between 
           items-center 
-          rounded 
           rounded-xl 
           p-5 
           my-6 
@@ -67,16 +64,25 @@ export default function PodcastList ({ episodes, mode }) {
           onClick={() => toggleActive(item)}
         >
           <div className='flex flex-col sm:flex-row justify-between items-center'>
-            <div className='sm:mb-0 mb-4 flex justify-center'>
-              <Image alt={item.title} src={item.itunes.image} width={100} height={100} />
-            </div>
             <div className='ml-4 w-full sm:w-5/6'>
-              <strong className='dark:text-white'>{item.title}</strong>
+              <strong className='text-green-600 dark:text-white'>{item.title}</strong>
               {mode === 'full' && <p className='description'>{item.contentSnippet}</p>}
             </div>
           </div>
         </article>
       ))}
+      </section>
+       {mode === 'full' && (
+         <section className='flex flex-col justify-start align-center'>
+          <h3 className='text-gray-600'>Escúchalos en</h3>
+          <div className='flex-1'>
+            <PodcastNetworks />
+          </div> 
+          <div className='my-6'>
+            <AudioPlayer audioItem={active} />
+          </div>
+          </section>
+        )}
       <style jsx>{`
         .description {
           overflow: hidden;

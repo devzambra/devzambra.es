@@ -70,6 +70,10 @@ header {
     margin-bottom: 2rem;
 }
 
+.blog a {
+    @apply text-green-600;
+}
+
 .blog h1:hover a .icon:before,
 .blog h2:hover a .icon:before,
 .blog h3:hover a .icon:before,
@@ -80,7 +84,7 @@ header {
     content: '#';
     font-size: 2rem;
     margin-left: 0.1rem;
-    @apply text-green-500;
+    @apply text-green-600;
 }
 
 .page-container {

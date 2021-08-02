@@ -23,9 +23,9 @@ export default function Navbar () {
           </Link>
         </li>
         <li className='font-bold text-gray-700 p-2'>
-          <Link href='/videos' className='link'>
-            <a className={router.pathname.startsWith('/videos') ? 'active' : ''}>VIDEOS</a>
-          </Link>
+          <a href='https://www.youtube.com/channel/UCtvgF3KrDStweE50YqzLJSg?view_as=subscriber' target='_blank' className='link'>
+            VIDEOS
+          </a>
         </li>
       </ul>
     </nav>

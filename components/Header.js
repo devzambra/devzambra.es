@@ -14,8 +14,6 @@ export default function Header () {
       </header>
       <style jsx>{`
         header {
-          backdrop-filter: blur(6px);
-          opacity: .9;
           z-index: 99;
         }
       `}

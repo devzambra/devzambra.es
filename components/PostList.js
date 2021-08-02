@@ -1,7 +1,7 @@
-import { frontMatter as blogPosts } from '../pages/blog/*.mdx'
-
 import Link from 'next/link'
+import { frontMatter as blogPosts } from '../pages/blog/*.mdx'
 import { compareDates, convertDate, getReadingTime } from '../utils/timeUtils'
+
 
 export default function PostList ({ limit }) {
   let posts = blogPosts.sort((a, b) => compareDates(a.publishedAt, b.publishedAt))
@@ -10,7 +10,7 @@ export default function PostList ({ limit }) {
   }
   return (
     <>
-      <h3 className='text-gray-600'>Últimos artículos</h3>
+      <h3 className='text-gray-600'>{limit ? 'Últimos artículos' : 'Todos los artículos'}</h3>
       {posts.map(frontMatter => {
         const slug = frontMatter.__resourcePath
           .replace('.mdx', '')
@@ -22,7 +22,6 @@ export default function PostList ({ limit }) {
                 flex 
                 flex-col 
                 justify-start 
-                rounded 
                 rounded-xl 
                 shadow-md 
                 p-5 

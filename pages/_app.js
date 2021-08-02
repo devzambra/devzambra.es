@@ -12,7 +12,6 @@ function MyApp ({ Component, pageProps }) {
         <meta name='description' content='Blog personal con artículos tecnológicos y de programación' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div style={{ zIndex: 999 }} className='bg-white w-4/5 absolute inset-0 h-screen shadow-xl' />
       <Header />
       <div className='container flex flex-col justify-between px-3'>
         <Component {...pageProps} />
