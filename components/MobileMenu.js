@@ -4,11 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const MobileMenu = ({ toggleMenu }) => {
+const MobileMenu = ({ toggleMenu, visible }) => {
   const router = useRouter()
   return (
-    <div style={{ zIndex: 999 }} className='sm:hidden w-full absolute inset-0 h-screen bg-gray-900 bg-opacity-70'>
-      <div className='bg-white dark:bg-gray-700 w-4/5 h-screen shadow-lg p-5'>
+    <div style={{ zIndex: 999 }} className={'mobileMenuContainer sm:hidden w-full absolute inset-0 h-screen bg-gray-900 bg-opacity-70 ' + (visible ? 'mVisible' : 'mHidden')}>
+      <div className={'bg-white dark:bg-gray-700 w-4/5 h-screen shadow-lg p-5 mobileMenu ' + (visible ? 'mVisible' : 'mHidden')}>
         <div className='grid grid-cols-4 justify-start items-start'>
           <div className='flex start items-center col-span-3'>
             <Image src='/assets/icons/logo.svg' width={40} height={40} />
@@ -44,6 +44,18 @@ const MobileMenu = ({ toggleMenu }) => {
           </ul>
         </nav>
       </div>
+      <style jsx>{`
+        .mobileMenu {
+          transition: transform 0.2s;
+        }
+        .mVisible {
+          transform: translateX(0%);
+        }
+        .mHidden {
+          transform: translateX(-100%);
+        }
+      `}
+      </style>
     </div>
   )
 }
