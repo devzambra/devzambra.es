@@ -3,11 +3,14 @@ import { PODCAST_NETWORKS } from '../constants/PODCASTS'
 
 export default function PodcastNetworks () {
   return (
-    <div className='bg-white flex justify-between items-center px-4 py-2 rounded-t-3xl p-2'>
+    <ul className='flex justify-start items-center flex-wrap my-4'>
       {PODCAST_NETWORKS.map(network => (
-        <a href={network.url} key={network.url} target='_blank' aria-label={network.url} rel='noreferrer'>
-          <Image src={`/assets/icons/${network.icon}`} alt={network.alt} width={32} height={32} />
-        </a>
+        <li key={network.url} className={'mr-4 border-2 p-2 rounded-lg flex justify-start items-center my-2 ' + network.borderColor}>
+          <a className='flex justify-start items-center' href={network.url} target='_blank' aria-label={network.url} rel='noreferrer'>
+            <Image src={`/assets/icons/${network.icon}`} alt={network.alt} width={32} height={32} />
+            <span className='ml-2'>{network.alt}</span>
+          </a>
+        </li>
       ))}
       <style jsx>{`
         a {
@@ -18,6 +21,6 @@ export default function PodcastNetworks () {
         }  
         `}
       </style>
-    </div>
+    </ul>
   )
 }

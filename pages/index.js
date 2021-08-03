@@ -9,11 +9,11 @@ import { getYoutubeVideos } from './api/youtube'
 
 export default function Home ({ episodes, videos }) {
   return (
-    <div className="page-container">
+    <div className='page-container'>
+      <Intro />
       <main className='mb-auto sm:grid grid-flow-col sm:grid-cols-3 gap-10 mt-10'>
         <section className='col-span-2'>
-          <Intro />
-          <div className='mt-10'>
+          <div>
             <PostList limit={3} />
           </div>
           <Separator hidden='sm:hidden' />
@@ -40,6 +40,6 @@ export async function getServerSideProps () {
   const videos = mapYoutubeVideos(videoItems)
 
   return {
-    props: { episodes: items.slice(0, 3), videos }
+    props: { episodes: items.slice(0, 1), videos: videos.slice(0, 1) }
   }
 }

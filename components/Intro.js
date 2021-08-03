@@ -1,15 +1,20 @@
-import Skills from '../components/Skills'
+import Networks from './Networks'
+import Avatar from './Avatar'
 
 export default function Intro () {
   return (
-    <>
-      <h1 className='mb-4'>¡Hola! Soy Manuel Zambrano.</h1>
-      <p>
-        Soy Senior Frontend Developer actualmente enfocado al mundo del desarrollo web con Angular, Vue y React, entre otros.
-        Mi actual objetivo es seguir aprendiendo muchísimo de este maravilloso mundo del Frontend y, en mi camino, aportar todo
-        lo que pueda a la comunidad Frontend.
-      </p>
-      <Skills />
-    </>
+    <div className='flex flex-col sm:flex-row justify-center items-center'>
+      <Avatar />
+      <div className='flex flex-col justify-center items-center mx-2'>
+        <h4 className='uppercase'>Mi nombre es</h4>
+        <h3 className='uppercase font-bold text-green-600 dark:text-green-600'>
+          Manuel Zambrano
+        </h3>
+        <h4 className='uppercase'>
+          Frontend Developer
+        </h4>
+        <Networks />
+      </div>
+    </div>
   )
 }

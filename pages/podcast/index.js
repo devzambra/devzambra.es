@@ -1,6 +1,6 @@
 import PodcastList from '../../components/PodcastList'
-
 import { getPodcastEpisodes } from '../api/podcast'
+
 
 export default function Podcast ({ episodes }) {
   return (

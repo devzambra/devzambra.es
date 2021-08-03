@@ -1,8 +1,16 @@
 module.exports = {
-  purge: [
-    './pages/**/*.{js,jsx,ts,tsx, mdx}',
-    './components/**/*.{js,jsx,ts,tsx, mdx}'
-  ],
+  purge: {
+    enabled: true,
+    content: [
+      './pages/**/*.{js,jsx,ts,tsx, mdx}',
+      './components/**/*.{js,jsx,ts,tsx, mdx}'
+    ],
+    options: {
+      safelist: [
+        /border.*/
+      ],
+    }
+  },
   darkMode: 'class',
   theme: {
     extend: {},

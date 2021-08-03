@@ -9,9 +9,11 @@ h1 {
 h2 {
     @apply text-3xl sm:text-4xl dark:text-white;
 }
+
 h3 {
     @apply text-2xl sm:text-3xl dark:text-white;
 }
+
 h4 {
     @apply text-xl sm:text-2xl dark:text-white;
 }
@@ -20,15 +22,26 @@ span, p, a, li {
     @apply text-lg dark:text-white;
 }
 
-body {
-    background-color: #f0f0f0;
+li a {
+    @apply hover:text-green-600;
 }
+
+a.active {
+    @apply text-green-600;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
 .dark body {
     background-color: rgb(23, 25, 35);
 }
+
 header {
-    background-color: #f0f0f0;
+    background-color: #f1f1f1;
 }
+
 .dark header {
     background-color: rgb(23, 25, 35);
 }
@@ -37,9 +50,11 @@ header {
 .blog ul {
     margin-left: 2rem;
 }
+
 .blog ul li:before {
     content: '➤ '
 }
+
 .blog p,
 .blog li {
     margin-bottom: 2rem;
@@ -55,6 +70,10 @@ header {
     margin-bottom: 2rem;
 }
 
+.blog a {
+    @apply text-green-600;
+}
+
 .blog h1:hover a .icon:before,
 .blog h2:hover a .icon:before,
 .blog h3:hover a .icon:before,
@@ -65,7 +84,7 @@ header {
     content: '#';
     font-size: 2rem;
     margin-left: 0.1rem;
-    @apply text-green-500;
+    @apply text-green-600;
 }
 
 .page-container {
