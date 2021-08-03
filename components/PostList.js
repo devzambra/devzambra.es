@@ -3,14 +3,18 @@ import { frontMatter as blogPosts } from '../pages/blog/*.mdx'
 import { compareDates, convertDate, getReadingTime } from '../utils/timeUtils'
 
 
-export default function PostList ({ limit }) {
+export default function PostList ({ limit, category = null }) {
   let posts = blogPosts.sort((a, b) => compareDates(a.publishedAt, b.publishedAt))
+  if (category) {
+    posts = posts.filter(p => p.tags.includes(category.toLowerCase()))
+  }
   if (limit) {
     posts = blogPosts.slice(0, limit)
   }
+  const title = category ? `Artículos de: ${category}` : 'Todos los artículos'
   return (
     <>
-      <h3 className='text-gray-600'>{limit ? 'Últimos artículos' : 'Todos los artículos'}</h3>
+      <h3 className='text-gray-600'>{limit ? 'Últimos artículos' : title}</h3>
       {posts.map(frontMatter => {
         const slug = frontMatter.__resourcePath
           .replace('.mdx', '')
