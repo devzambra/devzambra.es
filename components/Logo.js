@@ -17,8 +17,8 @@ export default function Logo () {
           onClick={toggleMenu} icon={faBars}
           className='sm:hidden w-8 h-8 mx-2 text-gray-600 dark:text-white'
         />
-        <div className='logo flex sm:hidden'><Image src='/assets/icons/logo.svg' width={40} height={40} /></div>
-        <div className='hidden sm:flex'><Image src='/assets/icons/logo.svg' width={40} height={40} /></div>
+        <div className='logo flex sm:hidden'><Image alt="devzambra" src='/assets/icons/logo.svg' width={40} height={40} /></div>
+        <div className='hidden sm:flex'><Image alt="devzambra" src='/assets/icons/logo.svg' width={40} height={40} /></div>
         <h4 className='hidden sm:block text-gray-700 ml-2'>devzambra</h4>
       </div>
       <MobileMenu toggleMenu={toggleMenu} visible={isMenuOpen} />

@@ -11,7 +11,7 @@ const MobileMenu = ({ toggleMenu, visible }) => {
       <div className={'bg-white dark:bg-gray-700 w-4/5 h-screen shadow-lg p-5 mobileMenu ' + (visible ? 'mVisible' : 'mHidden')}>
         <div className='grid grid-cols-4 justify-start items-start'>
           <div className='flex start items-center col-span-3'>
-            <Image src='/assets/icons/logo.svg' width={40} height={40} />
+            <Image alt='menu' src='/assets/icons/logo.svg' width={40} height={40} />
             <h4 className='text-gray-700 ml-2'>devzambra</h4>
           </div>
           <FontAwesomeIcon
@@ -37,7 +37,7 @@ const MobileMenu = ({ toggleMenu, visible }) => {
               </Link>
             </li>
             <li className='font-bold text-gray-700 p-2' onClick={toggleMenu}>
-              <a href='https://www.youtube.com/channel/UCtvgF3KrDStweE50YqzLJSg?view_as=subscriber' target='_blank' className='link'>
+              <a href='https://www.youtube.com/channel/UCtvgF3KrDStweE50YqzLJSg?view_as=subscriber' target='_blank' className='link' rel="noreferrer">
                 VIDEOS
               </a>
             </li>

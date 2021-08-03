@@ -23,7 +23,7 @@ export default function Navbar () {
           </Link>
         </li>
         <li className='font-bold text-gray-700 p-2'>
-          <a href='https://www.youtube.com/channel/UCtvgF3KrDStweE50YqzLJSg?view_as=subscriber' target='_blank' className='link'>
+          <a href='https://www.youtube.com/channel/UCtvgF3KrDStweE50YqzLJSg?view_as=subscriber' target='_blank' className='link' rel='noreferrer'>
             VIDEOS
           </a>
         </li>
