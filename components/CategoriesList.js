@@ -12,8 +12,8 @@ const CategoriesList = () => {
           </Link>
         </li>
       {POST_CATEGORIES.map(category => (
-        <li>
-          <Link href={`/blog?category=${category.name}`} key={category.name}>
+        <li key={category.name}>
+          <Link href={`/blog?category=${category.name}`}>
             <a className={'mr-4 border-2 p-2 rounded-lg flex justify-start items-center my-2 ' + category.borderColor}>
               {category.name}
             </a>

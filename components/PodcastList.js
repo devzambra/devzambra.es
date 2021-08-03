@@ -75,10 +75,10 @@ export default function PodcastList ({ episodes, mode }) {
        {mode === 'full' && (
          <section className='flex flex-col justify-start align-center'>
           <h3 className='text-gray-600'>Escúchalos en</h3>
-          <div className='flex-1'>
+          <div className='flex-1 mb-60 sm:mb-0'>
             <PodcastNetworks />
           </div> 
-          <div className='my-6'>
+          <div className='rounded-xl border-2 border-gray-700 dark:border-white sm:border-none my-6 fixed bottom-0 sm:relative mr-3 sm:mr-0 dark:bg-gray-900 bg-gray-100 sm:bg-gray-100 p-4 mb-3 sm:mb-0 sm:p-0 shadow-2xl sm:shadow-none'>
             <AudioPlayer audioItem={active} />
           </div>
           </section>

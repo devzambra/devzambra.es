@@ -1,5 +1,3 @@
-import PodcastNetworks from './PodcastNetworks'
-
 const AudioPlayer = ({ audioItem }) => {
   return (
     <>
