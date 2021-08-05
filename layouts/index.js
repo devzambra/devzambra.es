@@ -9,7 +9,7 @@ const Layout = ({ children, frontMatter }) => {
       <Link href='/blog'>
         <a className='text-xl flex justify-start items-center'>
           <FontAwesomeIcon icon={faChevronLeft} className='w-6 h-6 mr-2' />
-          <span>Volver a Todos los artículos</span>
+          Volver a Todos los artículos
         </a>
       </Link>
       <h1 className='mt-10 mb-4 title'>{frontMatter.title}</h1>

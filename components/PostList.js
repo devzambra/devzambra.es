@@ -1,19 +1,13 @@
 import Link from 'next/link'
-import { frontMatter as blogPosts } from '../pages/blog/*.mdx'
-import { compareDates, convertDate, getReadingTime } from '../utils/timeUtils'
+import { mapBlogPosts } from '../utils/mappers'
+import { convertDate, getReadingTime } from '../utils/timeUtils'
 
 
 export default function PostList ({ limit, category = null }) {
-  let posts = blogPosts.sort((a, b) => compareDates(a.publishedAt, b.publishedAt))
-  if (category) {
-    posts = posts.filter(p => p.tags.includes(category.toLowerCase()))
-  }
-  if (limit) {
-    posts = blogPosts.slice(0, limit)
-  }
+  const posts = mapBlogPosts(limit, category)
   const title = category ? `Artículos de: ${category}` : 'Todos los artículos'
   return (
-    <>
+    <SafeHydrate>
       <h3 className='text-gray-600'>{limit ? 'Últimos artículos' : title}</h3>
       {posts.map(frontMatter => {
         const slug = frontMatter.__resourcePath
@@ -56,6 +50,14 @@ export default function PostList ({ limit, category = null }) {
         }
       `}
       </style>
-    </>
+    </SafeHydrate>
+  )
+}
+
+function SafeHydrate({children}) {
+  return (
+    <div suppressHydrationWarning>
+      {typeof window === 'undefined' ? null : children}
+    </div>
   )
 }
