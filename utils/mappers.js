@@ -10,7 +10,7 @@ export const mapYoutubeVideos = (videoItems) => {
 }
 
 export const mapBlogPosts = (limit, category) => {
-  let posts = blogPosts.sort((a, b) => a.order < b.order)
+  let posts = blogPosts.sort((a, b) => b.order - a.order)
   if (category) {
     posts = posts.filter(p => p.tags.includes(category.toLowerCase()))
   }
